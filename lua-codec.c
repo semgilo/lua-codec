@@ -238,7 +238,7 @@ static int codec_rsa_private_sign(lua_State *L)
   SHA_CTX c;
   unsigned char sha[SHA_DIGEST_LENGTH];
   memset(sha, 0, SHA_DIGEST_LENGTH);
-  if(SHA_Init(&c) != 1)
+  if(SHA1_Init(&c) != 1)
   {
     OPENSSL_cleanse(&c, sizeof(c));
     return luaL_error(L, "SHA init error");
@@ -311,7 +311,7 @@ static int codec_rsa_public_verify(lua_State *L)
   int ctxlen = sizeof(ctx);
   unsigned char sha[SHA_DIGEST_LENGTH];
   memset(sha, 0, SHA_DIGEST_LENGTH);
-  if(SHA_Init(&ctx) != 1)
+  if(SHA1_Init(&ctx) != 1)
   {
     OPENSSL_cleanse(&ctx, ctxlen);
     return luaL_error(L, "SHA init error");
